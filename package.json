@@ -1,0 +1,11 @@
+{
+  "author": "Tatsuya Kosuda",
+  "name": "jp.tatsuya-kosuda.hdrp-cpp",
+  "displayName": "HDRPCustomPostProcessing",
+  "version": "1.0.0-preview.1",
+  "unity": "2021.2",
+  "description": "custom post processing for HDRP",
+  "dependencies": {
+    "com.unity.render-pipelines.high-definition": "12.1.2"
+  }
+}
