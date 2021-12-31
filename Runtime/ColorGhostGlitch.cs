@@ -15,7 +15,7 @@ namespace cpp.hdrp
         public ColorParameter color3 = new ColorParameter(Color.red);
         public ColorParameter color4 = new ColorParameter(Color.white);
 
-        public ClampedIntParameter step = new ClampedIntParameter(0, 0, 5);
+        public ClampedIntParameter step = new ClampedIntParameter(0, 0, 10);
 
         private static readonly int[] CACHE_IDs = new int[4]
         {
