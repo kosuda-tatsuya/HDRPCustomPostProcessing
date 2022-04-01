@@ -61,12 +61,12 @@ float4 CustomPostProcess(Varyings input) : SV_Target
 
     float3 c1 = FMapColor(float4(maxc.rgb, bright));
     float3 c2 = FMapColor(float4(maxc.rgb, bright));
-    float3 cs = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, originUV);
+    float4 cs = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, originUV);
 
-    float3 d = cs + cs - (c1 + c2);
+    float3 d = cs.rgb + cs.rgb - (c1 + c2);
     float dd = d.r + d.g + d.b;
 
-    float3 res = cs;
+    float3 res = cs.rgb;
     float dither = 1.0;
 
     if (fmod(originUV.x + originUV.y, 2) == 1)
@@ -78,5 +78,5 @@ float4 CustomPostProcess(Varyings input) : SV_Target
         res = float3(dd >= dither * 0.5 ? c1.r : c2.r, dd >= dither * 0.5 ? c1.g : c2.g, dd >= dither * 0.5 ? c1.b : c2.b);
     }
     
-    return float4(res, 1);
+    return float4(res, cs.a);
 }

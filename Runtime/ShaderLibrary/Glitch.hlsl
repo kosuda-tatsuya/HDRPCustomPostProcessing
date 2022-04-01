@@ -18,8 +18,8 @@ float4 CustomPostProcess(Varyings input) : SV_Target
     float rand = RandomRange(seed, -1, 1);
     float2 finUV = float2(frac(step(0.3, abs(rand)) * _Intensity.x * rand + uv.x), frac(step(0.3, abs(rand)) * _Intensity.y * rand + uv.y));
 
-    float3 outColor = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, finUV).rgb;
+    float4 outColor = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, finUV);
 
-    return float4(outColor, 1);
+    return outColor;
 }
 

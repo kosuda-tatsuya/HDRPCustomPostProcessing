@@ -13,7 +13,7 @@ float4 CustomPostProcess(Varyings input) : SV_Target
 
     //uint2 positionSS = clamp(uv, 0, 0.9999) * _ScreenSize.xy;
     //float3 outColor = LOAD_TEXTURE2D_X(_InputTexture, positionSS).xyz;
-    float3 outColor = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, uv).rgb;
+    float4 outColor = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, uv);
 
-    return float4(outColor, 1);
+    return outColor;
 }

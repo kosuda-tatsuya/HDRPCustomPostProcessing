@@ -15,8 +15,8 @@ float4 CustomPostProcess(Varyings input) : SV_Target
 
     float2 uv = input.texcoord;
     uint2 positionSS = input.positionCS.xy;
-    float3 c1 = LOAD_TEXTURE2D_X(_InputTexture, positionSS).xyz;
-    c1 = sin(c1 * (6.2 + _Frequency * 40.0) + _Time.y + _ShiftColor) * 0.5 + 0.5;
-    return float4(c1, 1);
+    float4 c = LOAD_TEXTURE2D_X(_InputTexture, positionSS);
+    float3 c1 = sin(c.rgb * (6.2 + _Frequency * 40.0) + _Time.y + _ShiftColor) * 0.5 + 0.5;
+    return float4(c1, c.a);
 }
 

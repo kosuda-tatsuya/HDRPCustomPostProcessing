@@ -17,11 +17,11 @@ float4 CustomPostProcess(Varyings input) : SV_Target
 
     float noise = frac(Unity_SimpleNoise_float(float2(_Time.x * _Speed, uv.y), _NoiseScale));
 
-    float3 c1 = LOAD_TEXTURE2D_X(_InputTexture, input.positionCS.xy).xyz;
+    float4 c = LOAD_TEXTURE2D_X(_InputTexture, input.positionCS.xy);
     float blendAlpha = step(1 - _Intensity, noise);
 
-    float3 c = Unity_Blend_HardMix_float3(c1, c1, blendAlpha);
+    float3 c1 = Unity_Blend_HardMix_float3(c.rgb, c.rgb, blendAlpha);
 
-    return float4(c, 1);
+    return float4(c1, c.a);
 }
 

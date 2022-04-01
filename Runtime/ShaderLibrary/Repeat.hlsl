@@ -19,6 +19,6 @@ TEXTURE2D_X(_InputTexture);
 float4 CustomPostProcess(Varyings input) : SV_Target
 {
     UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
-    float3 outColor = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, frac(input.texcoord)).xyz;
-    return float4(outColor, 1);
+    float4 outColor = SAMPLE_TEXTURE2D_X(_InputTexture, s_linear_clamp_sampler, frac(input.texcoord));
+    return outColor;
 }
